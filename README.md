@@ -1,50 +1,96 @@
-# Welcome to your Expo app 👋
+# To-do Mobile Applicaion
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A To-do Task Manager Mobile Applicaion built with React Native with minimal interface that helps users to organize and manage tasks easily
 
-## Get started
+## Demo
 
-1. Install dependencies
+<img src='./demo.gif' title='Video Demo' width='' alt='Video Demo' />
 
-   ```bash
-   npm install
-   ```
+## Features
 
-2. Start the app
+- **Home Tab (Daily):**
+    - Add and manage tasks scheduled for specific times during the day
+    - Automatically **refreshes every day**
+    - Only keeps incomplete tasks when a new day starts
+    - Clean UI for **quick daily planning** and task updates
+- **Scheduled Tab:**
+    - Stores tasks that have **specific calendar dates**
+    - **Minimal** and simple interface for easy visual scanning
+    - Designed for long-term or future-dated tasks (events, reminders, deadlines)
+- **Routines Tab:**
+    - Contains two sub-tabs: **_Mission_** and **_Streaks_**
+    - Designed for **habits and routines** that must be done every day
+    - Encourages consistent daily performance
+    - Displays streak tracking grids for **each mission task**
+    - Shows the user’s consistency across days
+    - Helps visualize progress and maintain motivation
 
-   ```bash
-   npx expo start
-   ```
+## Tech Stack
 
-In the output, you'll find options to open the app in a
+- Expo / React Native
+- TypeScript
+- AsyncStorage
+- Nativewind / Tailwind CSS
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Installation
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Install my-project with npm
 
 ```bash
-npm run reset-project
+  npm install my-project
+  cd my-project
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+1. Clone the repository:
 
-## Learn more
+```bash
+  git clone https://github.com/something0412/To-do-App
+  cd TodoApp
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+2. Install dependencies:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+  npm install
+```
 
-## Join the community
+3. Start project
 
-Join our community of developers creating universal apps.
+```bash
+  npx expo start
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+4. Scan the provided QR code and use the app
+
+## Project Structure
+
+```bash
+TodoApp/
+    ├── app/
+    │   ├── (tabs)/
+    │   │   ├── _layout.tsx         # main navigation layout
+    │   │   ├── index.tsx           # Home tab
+    │   │   ├── routines.tsx        # Routines tab
+    │   │   └── scheduled.tsx       # Scheduled Tasks tab
+    │   ├── _layout.tsx             # root layout
+    │   └── globals.css
+    ├── assets/
+    ├── components/                 # UI components
+    ├── constants/                  # centralized icon exports
+    ├── functions
+    │   ├── asyncStorage.ts         # storage utilities
+    │   └── sortTasks.ts            # sorting logic
+    └── types/
+        ├── images.d.ts
+        └── mainTypes.ts            # global TypeScript types
+```
+
+## Future Improvement
+
+- Expand support for additional platforms (Android, Web)
+- Enhance UI/UX with smoother animations and refined layouts
+- Add backend integration for cloud syncing and multi-device support
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

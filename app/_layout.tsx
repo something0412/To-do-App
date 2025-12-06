@@ -1,29 +1,51 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { Stack } from "expo-router";
+import { StatusBar, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import "./globals.css";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+    const currentDate: Date = new Date();
+    const date: string = String(currentDate.getDate());
+    const month: string = currentDate.toLocaleString("default", {
+        month: "long",
+    });
+    const year: string = String(currentDate.getFullYear());
+    const day: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
-  }
+    const formatedDate = `${day[currentDate.getDay()]} - ${month} ${date.length === 1 ? `0${date}` : date}, ${year}`;
 
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    const CustomHeader = () => {
+        return (
+            <SafeAreaView
+                className="w-full justify-center items-center pt-5 z-10"
+                style={{
+                    boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
+                    backgroundColor: "#F9F8F6",
+                }}
+            >
+                <Text
+                    className="justify-center self-center font-bold"
+                    style={{ fontSize: 22, color: "#753422" }}
+                >
+                    {formatedDate}
+                </Text>
+            </SafeAreaView>
+        );
+    };
+
+    return (
+        <>
+            <StatusBar barStyle="dark-content" />
+            <CustomHeader />
+            <Stack>
+                <Stack.Screen
+                    name="(tabs)"
+                    options={{
+                        headerShown: false,
+                        keyboardHandlingEnabled: false,
+                    }}
+                />
+            </Stack>
+        </>
+    );
 }
