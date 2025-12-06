@@ -93,4 +93,4 @@ TodoApp/
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/something0412/To-do-App/blob/main/LICENSE)
